@@ -8,6 +8,7 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
 
 
 ### .env file
+```
 {
    # app
   APP_PORT=3333
@@ -25,7 +26,7 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
   REDIS_HOST=
   REDIS_PORT=
 }
-
+```
 <!-- GETTING STARTED -->
 ## Installation
 1. Clone the repo
