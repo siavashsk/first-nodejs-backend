@@ -8,12 +8,7 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
 
 
 ### .env file
-<table>
-<tr>
-<th>Before Hoisting</th>
-</tr>
-<tr>
-<td>
+
    # app
   APP_PORT=3333
   APP_URL=http://localhost:3333
@@ -29,12 +24,6 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
   # redis
   REDIS_HOST=
   REDIS_PORT=
-</td>
-<td>
-</pre>
-</td>
-</tr>
-</table>
 
 
 <!-- GETTING STARTED -->
