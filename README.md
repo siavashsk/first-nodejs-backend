@@ -2,11 +2,9 @@
 this is my first backend application that is written in NodeJS, Express, Mongodb :octocat:
 
 ### Built With
-* [![Next](https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
-* [![Typescript](https://img.shields.io/badge/typescript-000000?style=for-the-badge&logo=typescript&logoColor=blue)](https://nextjs.org/)
-* [![Redux](https://img.shields.io/badge/redux-000000?style=for-the-badge&logo=redux&logoColor=blue)](https://nextjs.org/)
-* [![Socket io](https://img.shields.io/badge/socket_io-000000?style=for-the-badge&logo=socket.io&logoColor=white)](https://nextjs.org/)
-* [![Socket io](https://img.shields.io/badge/material_ui-000000?style=for-the-badge&logo=mui&logoColor=blue)](https://nextjs.org/)
+* [![NodeJS](https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nodedotjs&logoColor=green)](https://nodejs.org/)
+* [![Express](https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white)](https://express.com/)
+* [![Mongodb](https://img.shields.io/badge/mongodb-000000?style=for-the-badge&logo=mongodb&logoColor=green)](https://mongodb.com/)
 
 
 ### .env file
