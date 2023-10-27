@@ -20,10 +20,6 @@ this is my first backend application :octocat:
   MONGO_USERNAME=
   MONGO_PASSWORD=
   MONGO_PORT=27017
-  
-  # redis
-  REDIS_HOST=
-  REDIS_PORT=
 
 ```
 <!-- GETTING STARTED -->
