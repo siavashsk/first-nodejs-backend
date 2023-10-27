@@ -19,7 +19,7 @@ const usersList = async (req, res, next) => {
     .skip(offset);
   res.send({
     success: true,
-    message: "لیست کاربران با موفقیت تولید شد",
+    message: "Users list generated successfuly",
     data: { users },
     meta: {
       page,
@@ -36,17 +36,42 @@ const usersList = async (req, res, next) => {
 
 const addUser = async (req, res, next) => {
   try {
-    const { first_name, last_name, mobile, email } = req.body;
-    const newUser = new UserModel({
-      first_name,
-      last_name,
+    const {
+      username,
+      avatar,
       mobile,
-      email,
+      cup,
+      coin,
+      gem,
+      banLeague,
+      canWithdraw,
+      isOnline,
+      soccer_level,
+      soccer_win,
+      billiard_level,
+      billiard_win,
+      role,
+    } = req.body;
+    const newUser = new UserModel({
+      username,
+      avatar,
+      mobile,
+      cup,
+      coin,
+      gem,
+      banLeague,
+      canWithdraw,
+      isOnline,
+      soccer_level,
+      soccer_win,
+      billiard_level,
+      billiard_win,
+      role,
     });
     await newUser.save();
     res.status(201).send({
       success: true,
-      message: "کاربر جدید با موفقیت ایجاد شد",
+      message: "New user created successfuly",
       newUser,
     });
   } catch (error) {
@@ -60,13 +85,11 @@ const getUser = async (req, res, next) => {
     if (!id) {
       return res
         .status(404)
-        .send({ error: true, message: "کاربری با این مشخصات یافت نشد" });
+        .send({ error: true, message: "There is no user with this id" });
     }
     const user = await UserModel.findOne({ _id: id });
     if (!user) {
-      return res
-        .status(404)
-        .send({ error: true, message: "کاربری با این مشخصات یافت نشد" });
+      return res.status(404).send({ error: true, message: "User not found" });
     }
 
     return res.send({
@@ -84,14 +107,14 @@ const deleteUser = async (req, res, next) => {
     if (!id) {
       return res.status(404).send({
         error: true,
-        message: "کاربری با این مشخصات یافت نشد",
+        message: "There is no user with this id",
       });
     }
 
     await UserModel.deleteOne({ _id: id });
     res.send({
       success: true,
-      message: "کاربر با موفقیت حذف شد",
+      message: "User deleted successfuly",
     });
   } catch (error) {
     next(error);
@@ -104,7 +127,7 @@ const updateUser = async (req, res, next) => {
     if (!id) {
       return res.status(404).send({
         error: true,
-        message: "کاربری با این مشخصات یافت نشد",
+        message: "There is no user with this id",
       });
     }
 
@@ -113,11 +136,11 @@ const updateUser = async (req, res, next) => {
       { ...req.body }
     );
     if (n === 0 || nModified === 0) {
-      throw new Error("عملیات بروزرسانی با خطا مواجه شد");
+      throw new Error("Update failed");
     }
     res.send({
       success: true,
-      message: "کاربر با موفقیت بروزرسانی شد",
+      message: "User updated successfuly",
     });
   } catch (error) {
     next(error);
