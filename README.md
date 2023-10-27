@@ -8,7 +8,7 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
 
 
 ### .env file
-
+{
    # app
   APP_PORT=3333
   APP_URL=http://localhost:3333
@@ -24,7 +24,7 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
   # redis
   REDIS_HOST=
   REDIS_PORT=
-
+}
 
 <!-- GETTING STARTED -->
 ## Installation
