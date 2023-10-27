@@ -1,11 +1,24 @@
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema({
-  first_name: String,
-  last_name: String,
+  username: String,
+  avatar: String,
   mobile: String,
-  email: String,
-  wallet: { type: Number, default: 0 },
+  cup: Number,
+  coin: Number,
+  gem: Number,
+  banLeague: Boolean,
+  canWithdraw: Boolean,
+  isOnline: Boolean,
+  soccer_level: Number,
+  soccer_win: Number,
+  billiard_level: Number,
+  billiard_win: Number,
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
