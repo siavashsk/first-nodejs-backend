@@ -10,7 +10,8 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
 ### .env file
 ```
 {
-   # app
+
+  #app 
   APP_PORT=3333
   APP_URL=http://localhost:3333
   APP_SECRET=05e11010826ee2bb341d02dc1a713be0be3d806a
