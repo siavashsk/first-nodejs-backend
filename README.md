@@ -37,3 +37,18 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
 </table>
 
 
+<!-- GETTING STARTED -->
+## Installation
+1. Clone the repo
+   ```sh
+   git clone https://github.com/siavashsk/first-nodejs-backend.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Run the development server
+    ```sh
+   npm start
+   ```
+
