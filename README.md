@@ -31,11 +31,6 @@ this is my first backend application that is written in NodeJS, Express, Mongodb
   REDIS_PORT=
 </td>
 <td>
-<pre lang="js">
-var fullName;
-console.log(fullName); // undefined
-fullName = "Dariana Trahan";
-console.log(fullName); // Dariana Trahan
 </pre>
 </td>
 </tr>
