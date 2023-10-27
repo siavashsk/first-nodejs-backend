@@ -1,5 +1,5 @@
 # first-backend-app
-this is my first backend application that is written in NodeJS, Express, Mongodb :octocat:
+this is my first backend application :octocat:
 
 ### Built With
 * [![NodeJS](https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nodedotjs&logoColor=green)](https://nodejs.org/)
