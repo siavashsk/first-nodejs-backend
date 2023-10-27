@@ -1,5 +1,5 @@
 # first-backend-app
-this is my first backend application that is written in NodeJS, Express, Mongodb
+this is my first backend application that is written in NodeJS, Express, Mongodb :octocat:
 
 ## .env file
 <table>
@@ -27,4 +27,4 @@ console.log(fullName); // Dariana Trahan
 </tr>
 </table>
 
-:octocat:
+
