@@ -5,6 +5,6 @@ const auth = require("../middlewares/auth");
 
 module.exports = (app) => {
   app.use("/api/v1/users", [auth], userRouter);
+  app.use("/api/v1/session", sessionRouter);
   app.use("/api/v1/products", productRouter);
-  app.use("/api/v1/session", [auth], sessionRouter);
 };
