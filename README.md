@@ -1,10 +1,10 @@
 # first-backend-app
 this is my first backend application :octocat: 
 
-### Built With
-* [![NodeJS](https://img.shields.io/badge/node.js-000000?style=for-the-badge&logo=nodedotjs&logoColor=green)](https://nodejs.org/)
-* [![Express](https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white)](https://express.com/)
-* [![Mongodb](https://img.shields.io/badge/mongodb-000000?style=for-the-badge&logo=mongodb&logoColor=green)](https://mongodb.com/)
+## 🔧 Technologies
+![Node.js](https://img.shields.io/badge/-Node.js-020f26?style=for-the-badge&logo=node.js)&nbsp;
+![Express.js](https://img.shields.io/badge/-Express.js-020f26?style=for-the-badge&logo=express)&nbsp;
+![MongoDB](https://img.shields.io/badge/-MongoDB-020f26?style=for-the-badge&logo=mongoDB)&nbsp;
 
 
 ### .env file
