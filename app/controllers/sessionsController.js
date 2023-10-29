@@ -3,13 +3,13 @@ const TokenService = require("../services/TokenService");
 
 exports.newSession = async (req, res, next) => {
   try {
-    const { email, password } = req.body;
-    const user = await UserModel.findOne({ email });
+    const { username, password } = req.body;
+    const user = await UserModel.findOne({ username });
     if (!user) {
       return res.status(404).send({
         status: "error",
         code: 404,
-        message: "آدرس ایمیل یا کلمه ی عبور اشتباه است",
+        message: "Username or password is incorrect",
       });
     }
     const token = TokenService.sign({ id: user._id });
