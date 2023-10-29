@@ -3,6 +3,7 @@ const productRouter = require("./products");
 const sessionRouter = require("./sessions");
 const tournamentRouter = require("./tournaments");
 const leagueRouter = require("./leagues");
+const transactionRouter = require("./transactions");
 const auth = require("../middlewares/auth");
 
 module.exports = (app) => {
@@ -11,4 +12,5 @@ module.exports = (app) => {
   app.use("/api/v1/products", productRouter);
   app.use("/api/v1/tournaments", tournamentRouter);
   app.use("/api/v1/leagues", leagueRouter);
+  app.use("/api/v1/transactions", transactionRouter);
 };
