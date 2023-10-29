@@ -38,6 +38,7 @@ const addUser = async (req, res, next) => {
   try {
     const {
       username,
+      password,
       avatar,
       mobile,
       cup,
@@ -54,6 +55,7 @@ const addUser = async (req, res, next) => {
     } = req.body;
     const newUser = new UserModel({
       username,
+      password,
       avatar,
       mobile,
       cup,
