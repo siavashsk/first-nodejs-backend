@@ -1,6 +1,8 @@
 # first-backend-app
 this is my first backend application :octocat: 
 
+to run the application create .env file in root directory 
+
 ## 🔧 Technologies
 ![Node.js](https://img.shields.io/badge/-Node.js-020f26?style=for-the-badge&logo=node.js)&nbsp;
 ![Express.js](https://img.shields.io/badge/-Express.js-020f26?style=for-the-badge&logo=express)&nbsp;
