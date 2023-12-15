@@ -24,13 +24,13 @@ to run the application create .env file in root directory
 
 ```
 ## Available CRUD endpoints
-api/v1/users
-api/v1/session
-api/v1/products
-api/v1/tournaments
-api/v1/leagues
-api/v1/transactions
-api/v1/withdrawal
+#api/v1/users
+#api/v1/session
+#api/v1/products
+#api/v1/tournaments
+#api/v1/leagues
+#api/v1/transactions
+#api/v1/withdrawal
 
 <!-- GETTING STARTED -->
 ## 🚀Installation
