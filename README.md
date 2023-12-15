@@ -8,7 +8,6 @@ to run the application create .env file in root directory
 ![Express.js](https://img.shields.io/badge/-Express.js-020f26?style=for-the-badge&logo=express)&nbsp;
 ![MongoDB](https://img.shields.io/badge/-MongoDB-020f26?style=for-the-badge&logo=mongoDB)&nbsp;
 
-
 ### .env file
 ```
   #app 
@@ -24,8 +23,17 @@ to run the application create .env file in root directory
   MONGO_PORT=27017
 
 ```
+## Available CRUD endpoints
+api/v1/users
+api/v1/session
+api/v1/products
+api/v1/tournaments
+api/v1/leagues
+api/v1/transactions
+api/v1/withdrawal
+
 <!-- GETTING STARTED -->
-## Installation
+## 🚀Installation
 1. Clone the repo
    ```sh
    git clone https://github.com/siavashsk/first-nodejs-backend.git
