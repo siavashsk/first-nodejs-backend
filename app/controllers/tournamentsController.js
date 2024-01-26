@@ -13,6 +13,29 @@ const tournamentList = async (req, res, next) => {
   }
 };
 
+const getTournament = async (req, res, next) => {
+  try {
+    const {id} = req.params;
+    if (!id) {
+      return res
+        .status(404)
+        .send({ error: true, message: "There is no tournament with this id" });
+    }
+    const tournament = await TournamentModel.findOne({ _id: id });
+    if (!product) {
+      return res.status(404).send({ error: true, message: "Tournament not found" });
+    }
+
+    return res.send({
+      success: true,
+      data: { tournament },
+    });
+
+  } catch (error) {
+    next(error)
+  }
+}
+
 const addTournament = async (req, res, next) => {
   try {
     const { game, cost, capacity, league_status, cost_of_type } = req.body;
@@ -54,4 +77,30 @@ const deleteTournament = async (req, res, next) => {
   }
 };
 
-module.exports = { tournamentList, addTournament, deleteTournament };
+const updateTournament = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    if (!id) {
+      return res.status(404).send({
+        error: true,
+        message: "There is no tournament with this id",
+      });
+    }
+
+    const { n, nModified } = await TournamentModel.updateOne(
+      { _id: id },
+      { ...req.body }
+    );
+    if (n === 0 || nModified === 0) {
+      throw new Error("Update failed");
+    }
+    res.send({
+      success: true,
+      message: "Tournament updated successfuly",
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+module.exports = { tournamentList,getTournament, addTournament, deleteTournament, updateTournament };
