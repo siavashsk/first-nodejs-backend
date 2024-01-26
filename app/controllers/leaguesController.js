@@ -1,17 +1,9 @@
 const LeagueModel = require("../models/LeagueModel");
-const productModel = require("../models/ProductModel");
+const { getItemsList, getItem } = require("./dynamicController");
+
 
 const leagueList = async (req, res, next) => {
-  try {
-    const leagues = await LeagueModel.find({});
-    res.send({
-      success: true,
-      message: "Leagues list generated successfuly",
-      data: { leagues },
-    });
-  } catch (error) {
-    next();
-  }
+  getItemsList(req, res, next, "league", LeagueModel)
 };
 
 const addLeague = async (req, res, next) => {
@@ -46,23 +38,7 @@ const addLeague = async (req, res, next) => {
 };
 
 const getLeague = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res
-        .status(404)
-        .send({ error: true, message: "There is no league with this id" });
-    }
-
-    const leauge = await productModel.findOne({ _id: id });
-    if (!leauge) {
-      return res.status(404).send({ error: true, message: "League not found" });
-    }
-    return res.send({ success: true, data: leauge });
-
-  } catch (error) {
-    next(error);
-  }
+  getItem(req, res, next, "league", LeagueModel)
 };
 
 const deleteLeague = async (req, res, next) => {
