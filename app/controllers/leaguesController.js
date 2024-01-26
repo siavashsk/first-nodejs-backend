@@ -54,11 +54,11 @@ const getLeague = async (req, res, next) => {
         .send({ error: true, message: "There is no league with this id" });
     }
 
-    const product = await productModel.findOne({ _id: id });
-    if (!product) {
+    const leauge = await productModel.findOne({ _id: id });
+    if (!leauge) {
       return res.status(404).send({ error: true, message: "League not found" });
     }
-    return res.send({ success: true, data: product });
+    return res.send({ success: true, data: leauge });
 
   } catch (error) {
     next(error);

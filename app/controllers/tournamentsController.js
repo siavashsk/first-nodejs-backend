@@ -22,7 +22,7 @@ const getTournament = async (req, res, next) => {
         .send({ error: true, message: "There is no tournament with this id" });
     }
     const tournament = await TournamentModel.findOne({ _id: id });
-    if (!product) {
+    if (!tournament) {
       return res.status(404).send({ error: true, message: "Tournament not found" });
     }
 
