@@ -14,5 +14,5 @@ module.exports = (app) => {
   app.use("/api/v1/tournaments", tournamentRouter);
   app.use("/api/v1/leagues", leagueRouter);
   app.use("/api/v1/transactions", transactionRouter);
-  app.use("/api/v1/withdrawal", withdrawalRouter);
+  app.use("/api/v1/withdrawals", withdrawalRouter);
 };

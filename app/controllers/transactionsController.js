@@ -1,40 +1,12 @@
 const TransactionModel = require("../models/TransactionModel");
+const { getItemsList, getItem, deleteItem } = require("./dynamicController");
 
 const transactionList = async (req, res, next) => {
-  try {
-    const transactions = await TournamentModel.find({});
-    res.send({
-      success: true,
-      message: "Tournament list generated successfuly",
-      data: { transactions },
-    });
-  } catch (error) {
-    next(error);
-  }
+  getItemsList(req, res, next, "transaction", TransactionModel);
 };
 
 const getTransaction = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res
-        .status(404)
-        .send({ error: true, message: "There is no transaction with this id" });
-    }
-    const transaction = await TransactionModel.findOne({ _id: id });
-    if (!transaction) {
-      return res
-        .status(404)
-        .send({ error: true, message: "Transaction not found" });
-    }
-
-    return res.send({
-      success: true,
-      data: { transaction },
-    });
-  } catch (error) {
-    next(error);
-  }
+  getItem(req, res, next, "transaction", TransactionModel);
 };
 
 const addTransaction = async (req, res, next) => {
@@ -67,23 +39,7 @@ const addTransaction = async (req, res, next) => {
 };
 
 const deleteTransaction = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no transaction with this id",
-      });
-    }
-
-    await TransactionModel.deleteOne({ _id: id });
-    res.send({
-      success: true,
-      message: "Transaction deleted successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  deleteItem(req, res, next, "transaction", TransactionModel);
 };
 
 const updateTransaction = async (req, res, next) => {
@@ -117,5 +73,5 @@ module.exports = {
   transactionList,
   addTransaction,
   deleteTransaction,
-  updateTransaction
+  updateTransaction,
 };

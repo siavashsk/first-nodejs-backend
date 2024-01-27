@@ -1,40 +1,13 @@
 const TournamentModel = require("../models/TournamentModel");
+const { getItemsList, getItem, deleteItem } = require("./dynamicController");
 
 const tournamentList = async (req, res, next) => {
-  try {
-    const tournaments = await TournamentModel.find({});
-    res.send({
-      success: true,
-      message: "Tournament list generated successfuly",
-      data: { tournaments },
-    });
-  } catch (error) {
-    next(error);
-  }
+  getItemsList(req, res, next, "tournament", TournamentModel);
 };
 
 const getTournament = async (req, res, next) => {
-  try {
-    const {id} = req.params;
-    if (!id) {
-      return res
-        .status(404)
-        .send({ error: true, message: "There is no tournament with this id" });
-    }
-    const tournament = await TournamentModel.findOne({ _id: id });
-    if (!tournament) {
-      return res.status(404).send({ error: true, message: "Tournament not found" });
-    }
-
-    return res.send({
-      success: true,
-      data: { tournament },
-    });
-
-  } catch (error) {
-    next(error)
-  }
-}
+  getItem(req, res, next, "tournament", TournamentModel);
+};
 
 const addTournament = async (req, res, next) => {
   try {
@@ -58,23 +31,7 @@ const addTournament = async (req, res, next) => {
 };
 
 const deleteTournament = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no tournament with this id",
-      });
-    }
-
-    await TournamentModel.deleteOne({ _id: id });
-    res.send({
-      success: true,
-      message: "Tournament deleted successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  deleteItem(req, res, next, "tournament", TournamentModel);
 };
 
 const updateTournament = async (req, res, next) => {
@@ -103,4 +60,10 @@ const updateTournament = async (req, res, next) => {
   }
 };
 
-module.exports = { tournamentList,getTournament, addTournament, deleteTournament, updateTournament };
+module.exports = {
+  tournamentList,
+  getTournament,
+  addTournament,
+  deleteTournament,
+  updateTournament,
+};

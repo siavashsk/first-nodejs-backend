@@ -1,16 +1,8 @@
 const ProductModel = require("../models/ProductModel");
+const { getItemsList, getItem, deleteItem } = require("./dynamicController");
 
 const productList = async (req, res, next) => {
-  try {
-    const products = await ProductModel.find({});
-    res.send({
-      success: true,
-      message: "Products list generated successfuly",
-      data: { products },
-    });
-  } catch (error) {
-    next();
-  }
+  getItemsList(req, res, next, "product", ProductModel);
 };
 
 const addProduct = async (req, res, next) => {
@@ -34,45 +26,11 @@ const addProduct = async (req, res, next) => {
 };
 
 const getProduct = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res
-        .status(404)
-        .send({ error: true, message: "There is no product with this id" });
-    }
-    const product = await ProductModel.findOne({ _id: id });
-    if (!product) {
-      return res.status(404).send({ error: true, message: "Product not found" });
-    }
-
-    return res.send({
-      success: true,
-      data: { product },
-    });
-  } catch (error) {
-    next(error);
-  }
+  getItem(req, res, next, "product", ProductModel);
 };
 
 const deleteProduct = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no product with this id",
-      });
-    }
-
-    await ProductModel.deleteOne({ _id: id });
-    res.send({
-      success: true,
-      message: "Product deleted successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  deleteItem(req, res, next, "product", ProductModel);
 };
 
 const updateProduct = async (req, res, next) => {
@@ -101,5 +59,10 @@ const updateProduct = async (req, res, next) => {
   }
 };
 
-
-module.exports = { productList, addProduct, getProduct, deleteProduct, updateProduct };
+module.exports = {
+  productList,
+  addProduct,
+  getProduct,
+  deleteProduct,
+  updateProduct,
+};

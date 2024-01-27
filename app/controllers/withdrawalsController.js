@@ -1,40 +1,12 @@
 const WithdrawalModel = require("../models/withdrawalModel");
+const { getItemsList, getItem, deleteItem } = require("./dynamicController");
 
 const withdrawalList = async (req, res, next) => {
-  try {
-    const withdrawals = await WithdrawalModel.find({});
-    res.send({
-      success: true,
-      message: "Withdrawal list generated successfuly",
-      data: { withdrawals },
-    });
-  } catch (error) {
-    next(error);
-  }
+  getItemsList(req, res, next, "withdrawal", WithdrawalModel);
 };
 
 const getWithdrawal = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res
-        .status(404)
-        .send({ error: true, message: "There is no withdrawal with this id" });
-    }
-    const withdrawal = await WithdrawalModel.findOne({ _id: id });
-    if (!withdrawal) {
-      return res
-        .status(404)
-        .send({ error: true, message: "Withdrawal not found" });
-    }
-
-    return res.send({
-      success: true,
-      data: { withdrawal },
-    });
-  } catch (error) {
-    next(error);
-  }
+  getItem(req, res, next, "withdrawal", WithdrawalModel);
 };
 
 const addWithdrawal = async (req, res, next) => {
@@ -58,23 +30,7 @@ const addWithdrawal = async (req, res, next) => {
 };
 
 const deleteWithdrawal = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no withdrawal with this id",
-      });
-    }
-
-    await WithdrawalModel.deleteOne({ _id: id });
-    res.send({
-      success: true,
-      message: "Withdrawal deleted successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  deleteItem(req, res, next, "withdrawal", WithdrawalModel);
 };
 
 const updateWithdrawal = async (req, res, next) => {

@@ -1,9 +1,8 @@
 const LeagueModel = require("../models/LeagueModel");
-const { getItemsList, getItem } = require("./dynamicController");
-
+const { getItemsList, getItem, deleteItem } = require("./dynamicController");
 
 const leagueList = async (req, res, next) => {
-  getItemsList(req, res, next, "league", LeagueModel)
+  getItemsList(req, res, next, "league", LeagueModel);
 };
 
 const addLeague = async (req, res, next) => {
@@ -38,27 +37,11 @@ const addLeague = async (req, res, next) => {
 };
 
 const getLeague = async (req, res, next) => {
-  getItem(req, res, next, "league", LeagueModel)
+  getItem(req, res, next, "league", LeagueModel);
 };
 
 const deleteLeague = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no league with this id",
-      });
-    }
-
-    await LeagueModel.deleteOne({ _id: id });
-    res.send({
-      success: true,
-      message: "League deleted successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  deleteItem(req, res, next, "league", LeagueModel);
 };
 
 const updateLeague = async (req, res, next) => {
@@ -88,4 +71,10 @@ const updateLeague = async (req, res, next) => {
   }
 };
 
-module.exports = { leagueList,getLeague, addLeague, deleteLeague, updateLeague };
+module.exports = {
+  leagueList,
+  getLeague,
+  addLeague,
+  deleteLeague,
+  updateLeague,
+};
