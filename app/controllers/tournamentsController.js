@@ -1,5 +1,5 @@
 const TournamentModel = require("../models/TournamentModel");
-const { getItemsList, getItem, deleteItem } = require("./dynamicController");
+const { getItemsList, getItem, deleteItem, updateItem } = require("./dynamicController");
 
 const tournamentList = async (req, res, next) => {
   getItemsList(req, res, next, "tournament", TournamentModel);
@@ -35,29 +35,7 @@ const deleteTournament = async (req, res, next) => {
 };
 
 const updateTournament = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no tournament with this id",
-      });
-    }
-
-    const { n, nModified } = await TournamentModel.updateOne(
-      { _id: id },
-      { ...req.body }
-    );
-    if (n === 0 || nModified === 0) {
-      throw new Error("Update failed");
-    }
-    res.send({
-      success: true,
-      message: "Tournament updated successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  updateItem(req, res, next, "tournament", TournamentModel);
 };
 
 module.exports = {

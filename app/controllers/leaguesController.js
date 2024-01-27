@@ -1,5 +1,10 @@
 const LeagueModel = require("../models/LeagueModel");
-const { getItemsList, getItem, deleteItem } = require("./dynamicController");
+const {
+  getItemsList,
+  getItem,
+  deleteItem,
+  updateItem,
+} = require("./dynamicController");
 
 const leagueList = async (req, res, next) => {
   getItemsList(req, res, next, "league", LeagueModel);
@@ -45,30 +50,7 @@ const deleteLeague = async (req, res, next) => {
 };
 
 const updateLeague = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no league with this id",
-      });
-    }
-
-    const { n, nModified } = await LeagueModel.updateOne(
-      { _id: id },
-      { ...req.body }
-    );
-    if (n === 0 || nModified === 0) {
-      throw new Error("Update failed");
-    }
-
-    res.send({
-      success: true,
-      message: "League updated successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  updateItem(req, res, next, "league", LeagueModel);
 };
 
 module.exports = {

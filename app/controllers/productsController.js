@@ -1,5 +1,10 @@
 const ProductModel = require("../models/ProductModel");
-const { getItemsList, getItem, deleteItem } = require("./dynamicController");
+const {
+  getItemsList,
+  getItem,
+  deleteItem,
+  updateItem,
+} = require("./dynamicController");
 
 const productList = async (req, res, next) => {
   getItemsList(req, res, next, "product", ProductModel);
@@ -34,29 +39,7 @@ const deleteProduct = async (req, res, next) => {
 };
 
 const updateProduct = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no product with this id",
-      });
-    }
-
-    const { n, nModified } = await ProductModel.updateOne(
-      { _id: id },
-      { ...req.body }
-    );
-    if (n === 0 || nModified === 0) {
-      throw new Error("Update failed");
-    }
-    res.send({
-      success: true,
-      message: "Product updated successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  updateItem(req, res, next, "product", ProductModel);
 };
 
 module.exports = {

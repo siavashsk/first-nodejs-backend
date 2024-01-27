@@ -1,5 +1,10 @@
 const WithdrawalModel = require("../models/withdrawalModel");
-const { getItemsList, getItem, deleteItem } = require("./dynamicController");
+const {
+  getItemsList,
+  getItem,
+  deleteItem,
+  updateItem,
+} = require("./dynamicController");
 
 const withdrawalList = async (req, res, next) => {
   getItemsList(req, res, next, "withdrawal", WithdrawalModel);
@@ -34,29 +39,7 @@ const deleteWithdrawal = async (req, res, next) => {
 };
 
 const updateWithdrawal = async (req, res, next) => {
-  try {
-    const { id } = req.params;
-    if (!id) {
-      return res.status(404).send({
-        error: true,
-        message: "There is no withdrawal with this id",
-      });
-    }
-
-    const { n, nModified } = await WithdrawalModel.updateOne(
-      { _id: id },
-      { ...req.body }
-    );
-    if (n === 0 || nModified === 0) {
-      throw new Error("Update failed");
-    }
-    res.send({
-      success: true,
-      message: "Withdrawal updated successfuly",
-    });
-  } catch (error) {
-    next(error);
-  }
+  updateItem(req, res, next, "withdrawal", WithdrawalModel);
 };
 
 module.exports = {
