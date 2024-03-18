@@ -5,7 +5,6 @@ const userSchema = new mongoose.Schema({
   last_name: String,
   mobile: String,
   email: String,
-  wallet: { type: Number, default: 0 },
   createdAt: {
     type: Date,
     default: Date.now(),
