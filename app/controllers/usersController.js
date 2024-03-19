@@ -1,3 +1,4 @@
+const { validationResult, check } = require("express-validator");
 const UserModel = require("../models/UserModel");
 
 const usersList = async (req, res, next) => {
@@ -35,12 +36,14 @@ const usersList = async (req, res, next) => {
 };
 
 const addUser = async (req, res, next) => {
+  // Validation
+  
   try {
-    const { first_name, last_name, mobile, email } = req.body;
+    const { first_name, last_name, phone, email } = req.body;
     const newUser = new UserModel({
       first_name,
       last_name,
-      mobile,
+      phone,
       email,
     });
     await newUser.save();
