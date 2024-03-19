@@ -37,7 +37,10 @@ const usersList = async (req, res, next) => {
 
 const addUser = async (req, res, next) => {
   // Validation
-  
+  const result = validationResult(req);
+  if (!result.isEmpty()) {
+    res.status(400).send({ errors: result.array() });
+  }
   try {
     const { first_name, last_name, phone, email } = req.body;
     const newUser = new UserModel({

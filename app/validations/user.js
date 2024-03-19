@@ -18,8 +18,8 @@ const userValidation = checkSchema({
   phone: {
     isString: { errorMessage: "phone number should be string" },
     isLength: {
-      options: { min: 10, max: 10 },
-      errorMessage: "Phone number should be 10 digits",
+      options: { min: 11, max: 11 },
+      errorMessage: "phone number should be 10 digits",
     },
   },
   email: {
